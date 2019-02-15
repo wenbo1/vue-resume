@@ -1,10 +1,10 @@
 <template>
   <Resume>
-    <Info :Info="infoData.info"/>
-    <Skills :Skills="infoData.skills"/>
-    <Profiles :Profiles="infoData.profiles"/>
-    <Career :Career="infoData.career"/>
-    <Contact :Contact="infoData.contact"/>
+    <Info :Info="userData.info || infoData.info"/>
+    <Skills :Skills="userData.skills || infoData.skills"/>
+    <Profiles :Profiles="userData.profiles || infoData.profiles"/>
+    <Career :Career="userData.career || infoData.career"/>
+    <Contact :Contact="userData.contact || infoData.contact"/>
   </Resume>
 </template>
 <script>
@@ -83,7 +83,8 @@ export default {
             }
           ]
         }
-      }
+      },
+      userData: {}
     }
   },
   methods: {
@@ -96,7 +97,7 @@ export default {
         return false
       }
       if (data.data) {
-        this.infoData = data.data
+        this.userData = data.data
       }
     }).catch((error) => {
       console.log(error)
