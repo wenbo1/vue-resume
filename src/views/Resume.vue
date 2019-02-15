@@ -94,7 +94,7 @@ export default {
         this.token.removeToken()
         return false
       }
-      if (data.data === null) {
+      if (!data.data.info.name) {
         alert('暂无简历！')
         return this.$router.replace('/login')
       }

@@ -95,8 +95,9 @@ export default {
         this.token.removeToken()
         return false
       }
-      console.log(data)
-      this.infoData = data.data
+      if (data.data.info.name) {
+        this.infoData = data.data
+      }
     }).catch((error) => {
       console.log(error)
     })
