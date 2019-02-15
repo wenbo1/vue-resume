@@ -50,7 +50,9 @@ export default {
     submit () {
       this.loading = true
       let Data = {
-        profiles: this.profiles
+        userData: {
+          profiles: this.profiles
+        }
       }
       this.api.update(Data).then((response) => {
         console.log(response)
