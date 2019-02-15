@@ -95,7 +95,7 @@ export default {
         this.token.removeToken()
         return false
       }
-      if (data.data.info.name) {
+      if (data.data) {
         this.infoData = data.data
       }
     }).catch((error) => {
