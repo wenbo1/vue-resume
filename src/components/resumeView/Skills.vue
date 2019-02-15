@@ -2,7 +2,7 @@
   <div class="page-item section">
     <h2>技能</h2>
     <mu-container class="container">
-      <mu-chip v-for="(item, index) in Skills" class="chip" :key="index" color="#b0bec5" text-color="rgb(56, 19, 59)">
+      <mu-chip v-for="(item, index) in Skills.tags" class="chip" :key="index" color="#b0bec5" text-color="rgb(56, 19, 59)">
         {{item}}
       </mu-chip>
     </mu-container>
@@ -12,7 +12,7 @@
 // import shuffle from 'shuffle-array'
 export default {
   props: {
-    Skills: Array
+    Skills: Object
   },
   data () {
     return {

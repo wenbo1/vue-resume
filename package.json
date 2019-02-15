@@ -13,6 +13,8 @@
     "material-icons": "^0.3.0",
     "muse-ui": "^3.0.1",
     "muse-ui-loading": "^0.2.0",
+    "muse-ui-message": "^0.2.1",
+    "muse-ui-toast": "^0.3.0",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
     "vue-touch": "^2.0.0-beta.4"

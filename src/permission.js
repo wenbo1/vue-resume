@@ -7,7 +7,7 @@ router.beforeEach((to, from, next) => {
   if (token.getToken()) { // determine if there has token
     // has token
     if (to.path === '/login') {
-      next({ path: '/' })
+      next({ path: '/editor' })
     } else {
       next()
     }

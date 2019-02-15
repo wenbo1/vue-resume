@@ -1,5 +1,4 @@
 import request from '@/utils/request'
-
 export default {
   login (username, password) {
     const data = {
@@ -25,6 +24,29 @@ export default {
     }
     return request({
       url: '/register',
+      method: 'post',
+      data
+    })
+  },
+  getInfo () {
+    return request({
+      url: '/getInfo',
+      method: 'get'
+    })
+  },
+  getResume (user) {
+    console.log(user)
+    return request({
+      url: '/resume/' + user,
+      method: 'get'
+    })
+  },
+  update (update) {
+    const data = {
+      update
+    }
+    return request({
+      url: '/update',
       method: 'post',
       data
     })

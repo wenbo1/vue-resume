@@ -23,7 +23,7 @@
           <mu-radio v-model="infoData.status[3].value" value="离职" label="离职"></mu-radio>
         </mu-form-item>
         <mu-form-item class="btn-box">
-          <mu-button color="primary" @click="submit">提交</mu-button>
+          <mu-button v-loading="loading" data-mu-loading-size="24" color="primary" @click="submit">提交</mu-button>
           <mu-button @click="clear">重置</mu-button>
         </mu-form-item>
       </mu-form>
@@ -33,37 +33,58 @@
 <script>
 import { info } from '@/data/info'
 export default {
-  // ..
+  name: 'info',
   props: {
     Info: Object
   },
   data () {
     return {
       infoData: this.Info,
+      reset: this.Info,
       options: {
         nativePlace: info.nativePlace,
         education: info.education,
         marriage: [],
         working: []
-      }
+      },
+      openSimple: false,
+      dialogMsg: '',
+      loading: false
     }
   },
   methods: {
     submit () {
-      this.$refs.infoForm.validate().then((result) => {
-        console.log('form valid: ', result)
+      this.loading = true
+      let Data = {
+        info: this.infoData
+      }
+      this.api.update(Data).then((response) => {
+        console.log(response)
+        if (response.data.success) {
+          alert('更新成功！')
+        } else {
+          alert(response.data.message)
+        }
+        this.loading = false
+      }).catch((error) => {
+        this.openSimple = true
+        console.log(error)
       })
     },
+    closeSimpleDialog () {
+      this.openSimple = false
+    },
     clear () {
-      this.$refs.infoForm.clear()
-      this.validateForm = {
-        username: '',
-        password: '',
-        isAgree: false
-      }
+      this.infoData = this.reset
+      console.log('111')
     }
   },
   computed: {
+  },
+  watch: {
+    Info () {
+      this.infoData = this.Info
+    }
   }
 }
 </script>

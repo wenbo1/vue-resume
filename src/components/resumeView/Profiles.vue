@@ -1,7 +1,7 @@
 <template>
   <div class="page-item section">
     <h2>项目</h2>
-    <mu-carousel class="carousel" :hide-controls="controls" :hide-indicators="indicators" :interval="interval"  transition="slide" :cycle="cycle">
+    <mu-carousel class="carousel" :hide-controls="controls" :hide-indicators="indicators" transition="slide">
       <template v-for="(profile, index) in Profiles">
         <mu-carousel-item :key="index">
           <mu-container class="box">

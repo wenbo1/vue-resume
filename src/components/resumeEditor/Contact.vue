@@ -3,34 +3,28 @@
     <h2>联系我</h2>
     <div class="contact">
       <div class="experience">
-        <h3>经验</h3>
-        {{Contact.experience}}
+        <mu-text-field v-model="contact.experience" placeholder="经验" multi-line :rows="1" :rows-max="3" full-width></mu-text-field>
       </div>
       <div class="evaluation">
-        <h3>评价</h3>
-        {{Contact.evaluation}}
+        <mu-text-field v-model="contact.evaluation" placeholder="评价" multi-line :rows="1" :rows-max="3" full-width></mu-text-field>
       </div>
       <div class="socials">
         <h3>开发社区账号</h3>
         <div class="box">
-          <template v-for="(item, index) in Contact.socials">
-            <a class="socials-item" :key="index" :href="item.url" target="_blank">
-              <mu-icon class="icon" :value="`:iconfont ${item.icon}`"></mu-icon>
-            </a>
+          <template v-for="(item, index) in contact.socials">
+            <mu-text-field :key="index" v-model="item.url" :placeholder="item.icon" full-width></mu-text-field>
           </template>
         </div>
       </div>
       <div class="contact-me">
         <h3>联系方式</h3>
-        <a class="btn" :href="`tel:${Contact.tel}`" target="_blank">
-          <mu-icon class="icon" :value="`:iconfont icon-dianhua`"></mu-icon>
-          {{Contact.tel}}
-        </a>
-        <a class="btn" target="_blank">
-          <mu-icon class="icon" :value="`:iconfont icon-fayoujian`"></mu-icon>
-          {{Contact.email}}
-        </a>
+        <mu-text-field v-model="contact.tel" placeholder="电话" full-width></mu-text-field>
+        <mu-text-field v-model="contact.email" placeholder="邮箱" full-width></mu-text-field>
       </div>
+    </div>
+    <div class="btn-box">
+      <mu-button v-loading="loading" data-mu-loading-size="24" color="primary" @click="submit">提交</mu-button>
+      <mu-button @click="clear">重置</mu-button>
     </div>
   </div>
 </template>
@@ -40,7 +34,46 @@ export default {
   props: {
     Contact: Object
   },
+  data () {
+    return {
+      contact: this.Contact,
+      reset: this.Contact,
+      loading: false
+    }
+  },
+  methods: {
+    submit () {
+      this.loading = true
+      let Data = {
+        contact: this.contact
+      }
+      this.api.update(Data).then((response) => {
+        console.log(response)
+        if (response.data.success) {
+          alert('更新成功！')
+        } else {
+          alert(response.data.message)
+        }
+        this.loading = false
+      }).catch((error) => {
+        this.openSimple = true
+        console.log(error)
+      })
+    },
+    closeSimpleDialog () {
+      this.openSimple = false
+    },
+    clear () {
+      this.contact = this.reset
+      console.log('111')
+    }
+  },
   computed: {
+  },
+  watch: {
+    Contact () {
+      this.contact = this.Contact
+    }
   }
 }
 </script>
@@ -57,22 +90,6 @@ export default {
     .socials {
       .box {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .socials-item {
-          display: block;
-          height: 40px;
-          width: 40px;
-          background: rgba(11, 5, 48, 0.3);
-          border-radius: 20px;
-          text-align: center;
-          .icon {
-            font-size: 1.5rem;
-            line-height: 40px;
-            color: rgb(162, 165, 168);
-          }
-        }
       }
     }
     .contact-me {
@@ -95,6 +112,15 @@ export default {
           padding: 0 10px;
         }
       }
+    }
+    .mu-input{
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+  .btn-box{
+    .mu-button{
+      margin: 6px 8px;
     }
   }
 }

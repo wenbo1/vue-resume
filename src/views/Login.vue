@@ -38,31 +38,16 @@ export default {
           console.log(response)
           if (response.data.success) {
             this.token.setToken(response.data.token)
-            this.$router.push('/resume')
+            this.$router.push('/editor')
           } else {
             this.dialogMsg = response.data.message
             this.openSimple = true
           }
+          this.loading = false
         }).catch((error) => {
           this.openSimple = true
           console.log(error)
         })
-        // this.axios.post('http://127.0.0.1:3000/login', {
-        //   username: this.username,
-        //   password: this.password
-        // }).then((response) => {
-        //   console.log(response)
-        //   if (response.data.success) {
-        //     this.$router.push('/resume')
-        //   } else {
-        //     this.dialogMsg = response.data.message
-        //     this.openSimple = true
-        //   }
-        // }).catch((error) => {
-        //   this.openSimple = true
-        //   console.log(error)
-        // })
-        this.loading = false
       } else {
         if (this.username === '') {
           this.dialogMsg = '用户名不能为空！'

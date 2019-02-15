@@ -8,8 +8,8 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/resume',
-      name: 'resume',
+      path: '/resume/:name',
+      name: 'name',
       component: () => import('@/views/Resume')
     },
     {
@@ -25,6 +25,12 @@ export default new Router({
     {
       path: '/editor',
       name: 'editor',
+      component: () => import('@/views/Editor')
+    },
+    {
+      path: '/resume',
+      redirect: '/editor',
+      name: 'resume',
       component: () => import('@/views/Editor')
     }
   ]
