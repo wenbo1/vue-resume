@@ -39,9 +39,7 @@ export default {
     submit () {
       this.loading = true
       let Data = {
-        userData: {
-          career: this.career
-        }
+        career: this.career
       }
       this.api.update(Data).then((response) => {
         console.log(response)

@@ -95,7 +95,7 @@ export default {
         return false
       }
       if (!data.data) {
-        alert('暂无简历！')
+        alert('简历尚未完成！')
         return this.$router.replace('/login')
       }
       console.log(data)

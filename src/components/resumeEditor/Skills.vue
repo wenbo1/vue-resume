@@ -28,9 +28,7 @@ export default {
     submit () {
       this.loading = true
       let Data = {
-        userData: {
-          skills: this.skills
-        }
+        skills: this.skills
       }
       this.api.update(Data).then((response) => {
         console.log(response)

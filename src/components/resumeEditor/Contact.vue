@@ -45,9 +45,7 @@ export default {
     submit () {
       this.loading = true
       let Data = {
-        userData: {
-          contact: this.contact
-        }
+        contact: this.contact
       }
       this.api.update(Data).then((response) => {
         console.log(response)
