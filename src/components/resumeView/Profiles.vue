@@ -79,6 +79,7 @@ export default {
           }
           .mu-card-actions {
             padding: 0;
+            margin-top: 10px;
             .icon {
               font-size: 30px;
               color: #000;
