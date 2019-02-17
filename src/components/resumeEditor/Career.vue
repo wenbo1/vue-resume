@@ -37,6 +37,14 @@ export default {
       this.career.push({})
     },
     submit () {
+      // this.career.forEach(item, index => {
+      //   item.text ? '' : this.career.splice(index, 1)
+      // })
+      this.career.forEach((element, index) => {
+        if (!element.text) {
+          this.career.splice(index, 1)
+        }
+      })
       this.loading = true
       let Data = {
         career: this.career

@@ -39,7 +39,7 @@ export default {
         this.api.register(this.username, this.password).then((response) => {
           console.log(response)
           if (response.data.success) {
-            this.$router.push('/resume')
+            this.$router.push('/editor')
           } else {
             this.dialogMsg = response.data.message
             this.openSimple = true

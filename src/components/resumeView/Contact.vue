@@ -15,7 +15,7 @@
         <div class="box">
           <template v-for="(item, index) in Contact.socials">
             <a class="socials-item" :key="index" :href="item.url" target="_blank">
-              <mu-icon class="icon" :value="`:iconfont ${item.icon}`"></mu-icon>
+              <mu-icon class="icon" :value="`:iconfont icon-${item.icon}`"></mu-icon>
             </a>
           </template>
         </div>

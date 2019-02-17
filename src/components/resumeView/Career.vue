@@ -4,7 +4,7 @@
     <div class="career">
       <template v-for="(item, index) in Career">
         <div class="item" :key="index">
-          <h3 class="title">{{item.timeStart + '-' + item.timeEnd}}</h3>
+          <h3 class="title">{{item.timeStart + ' 至 ' + item.timeEnd}}</h3>
           <p class="text">{{item.text}}</p>
           <mu-divider></mu-divider>
         </div>
