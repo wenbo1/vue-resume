@@ -73,12 +73,24 @@ export default {
     font-weight: 300;
 }
 
-.login-main,
-.bg-bubbles {
+.login-main{
   width: 100%;
   height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
 }
+.bg-bubbles{
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
 
+}
 .wrapper {
   background: #72bdf5;
   background: -webkit-linear-gradient(top left, #fff 0%, #1e9fff 100%);

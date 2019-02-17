@@ -8,6 +8,7 @@
 @import './common/style.scss';
 #app {
   height: 100%;
+  min-height: 100%;
   font-family: Helvetica,sans-serif, 'Avenir', Helvetica, Arial",Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

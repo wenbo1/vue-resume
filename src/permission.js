@@ -13,7 +13,7 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     // has no token
-    if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
+    if (whiteList.indexOf(to.path) !== -1 || to.path.indexOf('/resume/') !== -1) { // 在免登录白名单，直接进入
       next()
     } else {
       next('/login') // 否则全部重定向到登录页
