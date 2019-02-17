@@ -94,7 +94,7 @@ export default {
       let data = response.data
       if (data.token === false) {
         this.token.removeToken()
-        return false
+        return this.$router.replace('/login')
       }
       if (data.data) {
         this.userData = data.data
