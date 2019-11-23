@@ -14,6 +14,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #d0d2d4;
-  background-color: transparent;
+  // background-color: transparent;
 }
 </style>
